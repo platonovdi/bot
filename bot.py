@@ -32,4 +32,4 @@ async def on_member_join(member):
         f'Hi {member.name}, welcome to my Discord server!'
     )
 
-client.run('NTU1MTE3NTQ0NDUzODMyNzA0.XYPgvg.81VBwBzQPbx_lS4rERXKdoPL53Q')
+client.run('token')
