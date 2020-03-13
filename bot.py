@@ -1,5 +1,5 @@
 import discord
-from discord import VoiceChannel, channel, guild, member, message, role
+import os
 client = discord.Client()
 
 
@@ -33,4 +33,5 @@ async def on_member_join(member):
    await member.create_dm()
    await member.dm_channel.send(f'Hi {member.name}, welcome to my Discord server!')
 
-client.run('NTU1MTE3NTQ0NDUzODMyNzA0.XmueXg.0j_OTUmP98_3pHxgJ_ainqAA0hM')
+
+client.run(str(token))
