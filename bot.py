@@ -28,8 +28,6 @@ async def on_member_join(member):
             await channel.send(f"""Welcome to the server {member.mention}""")
     print(1)'''
    await member.create_dm()
-   await member.dm_channel.send(
-        f'Hi {member.name}, welcome to my Discord server!'
-    )
+   await member.dm_channel.send(f'Hi {member.name}, welcome to my Discord server!')
 
-client.run('token')
+client.run('NTU1MTE3NTQ0NDUzODMyNzA0.XmuNPw.j62RQlBhyOur7ebLwjOH7WxUxrc', bot = True)
