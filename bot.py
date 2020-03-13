@@ -1,11 +1,14 @@
 import discord
-from discord import VoiceChannel, channel, guild, member, message, role
+import os
 client = discord.Client()
 
 
 @client.event
 async def on_ready():
-    print('Logged on as {0} !'.format(client))
+    print('Logged in as')
+    print(client.user.name)
+    print(client.user.id)
+    print('------')
     
 
 
@@ -15,8 +18,8 @@ async def on_message(message):
         return
     if not message.content.startswith('!info'):
        ''' await message.channel.send(message.content)'''
-       e = discord.Embed(title='foo')
-       await message.channel.send('Hello', embed=e)
+       e = discord.Embed(title=message.author.name)
+       await message.channel.send(message.content, embed=e)
     if message.content.startswith('!info'):
         id = await client.fetch_user(message.author.id)
         await message.channel.send(id) 
@@ -28,8 +31,7 @@ async def on_member_join(member):
             await channel.send(f"""Welcome to the server {member.mention}""")
     print(1)'''
    await member.create_dm()
-   await member.dm_channel.send(
-        f'Hi {member.name}, welcome to my Discord server!'
-    )
+   await member.dm_channel.send(f'Hi {member.name}, welcome to my Discord server!')
 
-client.run('token')
+token = os.environ.get('token')
+client.run(str(token))
