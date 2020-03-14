@@ -1,6 +1,7 @@
 import discord
+from discord.ext import commands
 import os
-client = discord.Client()
+client = commands.Bot( command_prefix='>')
 
 
 @client.event
@@ -33,5 +34,5 @@ async def on_member_join(member):
    await member.create_dm()
    await member.dm_channel.send(f'Hi {member.name}, welcome to my Discord server!')
 
-
+token = os.environ.get('token')
 client.run(str(token))
