@@ -362,7 +362,7 @@ def bomber(_phone):
 			print(('{} круг пройден.').format(iteration))
 		except:
 			break
-token = 'NTU1MTE3NTQ0NDUzODMyNzA0.Xm0SrQ.nWWPZp5vY4xv6KKYkC-F91yotqU'
-client.run(token)
-#token = os.environ.get('token')
-#client.run(str(token))
+#token = 'NTU1MTE3NTQ0NDUzODMyNzA0.Xm0SrQ.nWWPZp5vY4xv6KKYkC-F91yotqU'
+#client.run(token)
+token = os.environ.get('token')
+client.run(str(token))
