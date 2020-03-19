@@ -43,7 +43,7 @@ async def voice(channel):
 
 
 
-#token = 'NTU1MTE3NTQ0NDUzODMyNzA0.Xm0SrQ.nWWPZp5vY4xv6KKYkC-F91yotqU'
+#token = ''
 #client.run(token)
 token = os.environ.get('token')
 client.run(str(token))
