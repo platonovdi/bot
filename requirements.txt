@@ -1,2 +1,8 @@
 discord.py
-requests, random, datetime, sys, time, argparse, os
+requests
+random
+datetime
+sys
+time
+argparse
+os
