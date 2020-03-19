@@ -1,7 +1,8 @@
 import discord
+from discord.ext import Bot
 from discord.ext import commands
 import os
-import requests, random, datetime, sys, time, argparse, os
+
 
 client = discord.Client()
 client = commands.Bot( command_prefix='>')
@@ -30,10 +31,8 @@ async def on_message(message):
     print('Message from {0.author} : {0.content}'.format(message))'''
 @client.event
 async def on_member_join(member):
-   ''' for channel in member.guild.channels:
-        if str(channel) == "main": # We check to make sure we are sending the message in the general channel
-            await channel.send(f"""Welcome to the server {member.mention}""")
-    print(1)'''
+   role = discord.utils.get(member.server.roles , name = 'Новичок')
+   await client.add_role(member, role)
    await member.create_dm()
    await member.dm_channel.send(f'Hi {member.name}, welcome to my Discord server!')
 
