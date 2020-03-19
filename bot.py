@@ -30,7 +30,7 @@ async def on_message(message):
     print('Message from {0.author} : {0.content}'.format(message))'''
 @client.event
 async def on_member_join(member):
-   role = discord.utils.get(member.guild.roles , name = 'Новичок')
+   role = discord.utils.get(member.guild.roles , id = 690290157999620116)
    await member.add_roles(member, role)
    await member.create_dm()
    await member.dm_channel.send(f'Hi {member.name}, welcome to my Discord server!')
