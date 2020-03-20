@@ -1,5 +1,6 @@
 import discord
-from discord.ext import commands , MissingPermissions
+from discord.ext import commands 
+from discord.ext.commands import MissingPermissions
 
 import os
 
