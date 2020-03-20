@@ -44,6 +44,7 @@ async def voice(channel):
 
 
 @client.command(pass_context = True)
+@commands.has_permissions(administrator = True)
 async def clear(ctx , amount = 1000):
     await ctx.channel.purge(limit = amount)
 #token = ''
