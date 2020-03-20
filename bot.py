@@ -43,7 +43,9 @@ async def voice(channel):
     print('>voice'+ str(channel))
 
 
-
+@client.command(pass_context = True)
+async def clear(ctx , amount = 1000):
+    await ctx.channel.purge(limit = amount)
 #token = ''
 #client.run(token)
 token = os.environ.get('token')
