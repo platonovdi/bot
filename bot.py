@@ -1,5 +1,6 @@
 import discord
-from discord.ext import commands
+from discord.ext import commands , MissingPermissions
+
 import os
 
 
@@ -49,7 +50,7 @@ async def clear(ctx , amount = 1000):
     await ctx.channel.purge(limit = amount)
 @clear.error
 async def clear_error(error, ctx):
-    if isinstance(error):
+    if isinstance(error, MissingPermissions):
         text = "Sorry {}, you do not have permissions to do that!".format(ctx.message.author)
         await ctx.send(text)
 #token = ''
