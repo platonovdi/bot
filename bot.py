@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands 
-from discord.ext.commands import MissingPermissions
 
 import os
 
@@ -48,12 +47,12 @@ async def voice(channel):
 @client.command(pass_context = True)
 @commands.has_permissions(administrator = True)
 async def clear(ctx , amount = 1000):
-    await ctx.channel.purge(limit = amount)
-@clear.error
-async def clear_error(error, ctx):
-    if isinstance(error, MissingPermissions):
-        text = "Sorry {}, you do not have permissions to do that!".format(ctx.message.author)
-        await ctx.send(text)
+    try:
+        await ctx.channel.purge(limit = amount)
+    except Exception:
+        await ctx.send('У вас {} нет прав на это'.format(ctx.author.mention))   
+    
+
 #token = ''
 #client.run(token)
 token = os.environ.get('token')
