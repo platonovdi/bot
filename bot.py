@@ -47,6 +47,11 @@ async def voice(channel):
 @commands.has_permissions(administrator = True)
 async def clear(ctx , amount = 1000):
     await ctx.channel.purge(limit = amount)
+@clear.error
+async def clear_error(error, ctx):
+    if isinstance(error):
+        text = "Sorry {}, you do not have permissions to do that!".format(ctx.message.author)
+        await ctx.send(text)
 #token = ''
 #client.run(token)
 token = os.environ.get('token')
