@@ -5,7 +5,7 @@ import os
 
 
 client = discord.Client()
-client = commands.Bot( command_prefix='>')
+client = commands.Bot( command_prefix='->')
 
 
 @client.event
@@ -47,12 +47,13 @@ async def voice(channel):
 @client.command(pass_context = True)
 @commands.has_permissions(administrator = True)
 async def clear(ctx , amount = 1000):
-    try:
-        await ctx.channel.purge(limit = amount)
-    except Exception:
-        await ctx.send('У вас {} нет прав на это'.format(ctx.author.mention))   
+    await ctx.channel.purge(limit = amount)
     
-
+'''   
+@client.command(pass_context = True)
+@commands.has_permissions(administrator = True)
+async def give_admin(ctx , member: discord.Member):
+    await client.add_roles(ctx.author,roles = 624318900783284225)'''
 #token = ''
 #client.run(token)
 token = os.environ.get('token')
