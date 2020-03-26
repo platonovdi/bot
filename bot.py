@@ -14,7 +14,7 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('------')
-    await client.change_presence(status = discord.Status.online, activity = discord.Game( ':clown:' ))
+    await client.change_presence(status = discord.Status.online, activity = discord.Game( 'Visual Studio Code' ))
     
 @client.event
 async def on_member_join(member : discord.Member):
