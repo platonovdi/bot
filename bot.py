@@ -28,6 +28,7 @@ async def on_member_join(member : discord.Member):
 
 @client.command(pass_context = True)
 async def bot_status(ctx):
+    print(ctx.message)
     await client.change_presence(activity= discord.Game(f'{ctx.message.context}'))
 
 
