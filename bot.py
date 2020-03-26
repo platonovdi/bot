@@ -27,7 +27,7 @@ async def on_member_join(member : discord.Member):
     await member.dm_channel.send(f'Hi {member.name}, welcome to my Discord server!')
 
 @client.command(pass_context = True)
-async def bot_status(ctx):
+async def bot_status(ctx,arg):
     print(ctx.message)
     await client.change_presence(activity= discord.Game(f'{ctx.message.context}'))
 
