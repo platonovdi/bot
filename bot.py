@@ -15,22 +15,8 @@ async def on_ready():
     print(client.user.id)
     print('------')
     
-
-'''
 @client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-    if not message.content.startswith('!info'):
-        await message.channel.send(message.content)
-       e = discord.Embed(title=message.author.name)
-       await message.channel.send(message.content, embed=e)
-    if message.content.startswith('!info'):
-        id = await client.fetch_user(message.author.id)
-        await message.channel.send(id) 
-    print('Message from {0.author} : {0.content}'.format(message))'''
-@client.event
-async def on_member_join(member):
+async def on_member_join(member : discord.Member):
     channel = client.get_channel( 555120639447662602 )
     role = discord.utils.get(member.guild.roles , id = 690290157999620116)
     await member.add_roles(role)
@@ -40,14 +26,20 @@ async def on_member_join(member):
     await member.dm_channel.send(f'Hi {member.name}, welcome to my Discord server!')
 
 @client.command(pass_context = True)
-async def voice(channel):
-    print('>voice'+ str(channel))
+async def voice(ctx):
+    print('>voice'+ str(ctx))
 
 
 @client.command(pass_context = True)
 @commands.has_permissions(administrator = True)
+
 async def clear(ctx , amount = 1000):
     await ctx.channel.purge(limit = amount)
+
+@clear.error
+async def clear_error(ctx , error):
+    if isinstance(error , commands.MissingPermissions):
+        await ctx.send(f'{ctx.author.mention}, у вас недостаточно прав! :clown:')
     
 '''   
 @client.command(pass_context = True)
