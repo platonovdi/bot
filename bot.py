@@ -27,6 +27,7 @@ async def on_member_join(member : discord.Member):
     await member.dm_channel.send(f'Hi {member.name}, welcome to my Discord server!')
 
 @client.command(pass_context = True)
+@commands.has_permissions(administrator = True)
 async def bot_status(ctx, *args):
     string = str()
     for i in args:
