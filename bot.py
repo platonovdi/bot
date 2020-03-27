@@ -37,6 +37,11 @@ async def bot_status(ctx, *args):
     await client.change_presence(activity= discord.Game(f'{string}'))
     print(string + ' ')
 
+@bot_status.error
+async def status_error(ctx,error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send(f'{ctx.author.mention}, у вас недостаточно прав! :clown:')
+
 
 @client.command(pass_context = True)
 async def qr(ctx , *args ):
@@ -49,9 +54,9 @@ async def qr(ctx , *args ):
     img.save('qr.png')
     await ctx.send(file = discord.File( fp = 'qr.png'))
 
+
 @client.command(pass_context = True)
 @commands.has_permissions(administrator = True)
-
 async def clear(ctx , amount = 1000):
     await ctx.channel.purge(limit = amount)
 
