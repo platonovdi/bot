@@ -14,7 +14,8 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('------')
-    await client.change_presence(status = discord.Status.idle, activity = discord.Game( 'Visual Studio Code' ))
+    custom_activity = discord.Streaming(name = 'Bot',url = 'https://github.com/platonovdi/bot' , game = 'Visual Studio Code')
+    await client.change_presence(status = discord.Status.idle, activity = custom_activity)
     
 @client.event
 async def on_member_join(member : discord.Member):
