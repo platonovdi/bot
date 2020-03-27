@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands 
-
+import qrcode
 import os
 
 
@@ -39,9 +39,15 @@ async def bot_status(ctx, *args):
 
 
 @client.command(pass_context = True)
-async def voice(ctx):
-    print('>voice'+ str(ctx))
-
+async def qr(ctx , *args ):
+    string = str()
+    for i in args:
+        string += str(i)
+        string += ' '
+    print(string)
+    img = qrcode.make(string)
+    img.save('qr.png')
+    await ctx.send(file = discord.File( fp = 'qr.png'))
 
 @client.command(pass_context = True)
 @commands.has_permissions(administrator = True)
