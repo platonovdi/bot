@@ -35,6 +35,7 @@ async def bot_status(ctx, *args):
         string += ' '
     print(string)
     await client.change_presence(activity= discord.Game(f'{string}'))
+    print(string + ' ')
 
 
 @client.command(pass_context = True)
