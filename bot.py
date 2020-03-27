@@ -14,7 +14,7 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('------')
-    custom_activity = discord.Streaming(name = 'Bot',url = 'https://github.com/platonovdi/bot' , game = 'Visual Studio Code')
+    custom_activity = discord.Streaming(name = 'Bot',url = 'https://github.com/platonovdi/bot')
     await client.change_presence(status = discord.Status.idle, activity = custom_activity)
     
 @client.event
