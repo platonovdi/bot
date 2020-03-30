@@ -46,7 +46,7 @@ async def bot_status(ctx, *args):
 @bot_status.error
 async def status_error(ctx,error):
     if isinstance(error, commands.MissingPermissions):
-        await ctx.send(f'{ctx.author.mention}, у вас недостаточно прав! :clown:')
+        await ctx.send(embed = discord.Embed(desription = f':exclamation:{ctx.author.mention}, у вас недостаточно прав! :clown:', color = discord.Colour.from_rgb(255,0,0))
 
 
 @client.command(pass_context = True)
