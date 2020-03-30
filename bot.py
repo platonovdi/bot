@@ -46,8 +46,7 @@ async def bot_status(ctx, *args):
 @bot_status.error
 async def status_error(ctx,error):
     if isinstance(error, commands.MissingPermissions):
-        await ctx.send(embed = discord.Embed(desription = f':exclamation:{ctx.author.mention}, у вас недостаточно прав! :clown:', color = discord.Colour.from_rgb(255,0,0))
-
+        await ctx.send(embed = discord.Embed(desription = f'**:exclamation:{ctx.author.mention}, у вас недостаточно прав! :clown:', color=0x0c0c0c))
 
 @client.command(pass_context = True)
 async def qr(ctx , *args ):
