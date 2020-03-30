@@ -32,7 +32,6 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound ):
       await ctx.send(embed = discord.Embed(description = f'**:exclamation: {ctx.author.name},Данной команды   не существует.**', color=0x0c0c0c)) 
 
-
 @client.command(pass_context = True)
 @commands.has_permissions(administrator = True)
 async def bot_status(ctx, *args):
