@@ -30,7 +30,7 @@ async def on_member_join(member : discord.Member):
 @client.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound ):
-      await ctx.send(embed = discord.Embed(description = f'**:exclamation:{ctx.author.mention},Данной команды   не существует.**', color=0xff0000)) 
+      await ctx.send(embed = discord.Embed(description = f':exclamation:{ctx.author.mention},Данной команды   не существует. :clown:', color=0xff0000)) 
 
 @client.command(pass_context = True)
 @commands.has_permissions(administrator = True)
@@ -46,7 +46,7 @@ async def bot_status(ctx, *args):
 @bot_status.error
 async def status_error(ctx,error):
     if isinstance(error, commands.MissingPermissions):
-        await ctx.send(embed = discord.Embed(description = f'**:exclamation:{ctx.author.mention}, у вас недостаточно прав! :clown:', color=0xff0000))
+        await ctx.send(embed = discord.Embed(description = f':exclamation:{ctx.author.mention}, у вас недостаточно прав! :clown:', color=0xff0000))
 
 @client.command(pass_context = True)
 async def qr(ctx , *args ):
@@ -68,7 +68,7 @@ async def clear(ctx , amount = 1000):
 @clear.error
 async def clear_error(ctx , error):
     if isinstance(error , commands.MissingPermissions):
-        await ctx.send(embed = discord.Embed(description = f'{ctx.author.mention}, у вас недостаточно прав! :clown:',color = 0xff0000))
+        await ctx.send(embed = discord.Embed(description = f':exclamation:{ctx.author.mention}, у вас недостаточно прав! :clown:',color = 0xff0000))
     
 '''   
 @client.command(pass_context = True)
