@@ -30,7 +30,7 @@ async def on_member_join(member : discord.Member):
 @client.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound ):
-        await ctx.send(embed = discord.Embed(description = f'**:exclamation: {ctx.author.name},Данной команды не существует.**', color=0x0c0c0c)) 
+      await ctx.send(embed = discord.Embed(description = f'**:exclamation: {ctx.author.name},Данной команды   не существует.**', color=0x0c0c0c)) 
 
 
 @client.command(pass_context = True)
