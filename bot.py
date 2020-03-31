@@ -2,6 +2,8 @@ import discord
 from discord.ext import commands 
 import qrcode
 import os
+import json
+from func import level_up, add_experience,update_data
 
 
 client = discord.Client()
@@ -18,14 +20,46 @@ async def on_ready():
     await client.change_presence(status = discord.Status.idle, activity = custom_activity)
     
 @client.event
+async def on_message(message):
+    if message.author.bot == False:
+        with open('users.json', 'r') as f:
+            users = json.load(f)
+ 
+ 
+        await update_data(users, message.author)
+        await add_experience(users, message.author, 5)
+        await level_up(users, message.author, message)
+   
+   
+        with open('users.json', 'w') as f:
+            json.dump(users, f)
+ 
+
+
+@client.event
 async def on_member_join(member : discord.Member):
     channel = client.get_channel( 555120639447662602 )
     role = discord.utils.get(member.guild.roles , id = 690290157999620116)
     await member.add_roles(role)
    
+
+
+    with open('users.json', 'r') as f:
+        users = json.load(f)
+ 
+ 
+    await update_data(users, member)
+ 
    
+    with open('money.json', 'w') as f:
+        json.dump(users, f)
+   
+
     await member.create_dm()
     await member.dm_channel.send(f'Hi {member.name}, welcome to my Discord server!')
+
+
+
 
 @client.event
 async def on_command_error(ctx, error):
