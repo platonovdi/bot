@@ -104,12 +104,18 @@ async def clear_error(ctx , error):
     if isinstance(error , commands.MissingPermissions):
         await ctx.send(embed = discord.Embed(description = f':exclamation:{ctx.author.mention}, у вас недостаточно прав! :clown:',color = 0xff0000))
     
+@client.command(pass_context = True)
+async def lvl(ctx):
+    author = ctx.author
+    await ctx.send(author.id)
 '''   
 @client.command(pass_context = True)
 @commands.has_permissions(administrator = True)
 async def give_admin(ctx , member: discord.Member):
     await client.add_roles(ctx.author,roles = 624318900783284225)'''
+
 #token = ''
 #client.run(token)
+
 token = os.environ.get('token')
 client.run(str(token))
