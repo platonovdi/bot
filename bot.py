@@ -18,22 +18,7 @@ async def on_ready():
     print('------')
     custom_activity = discord.Streaming(name = 'Bot',url = 'https://github.com/platonovdi/bot')
     await client.change_presence(status = discord.Status.idle, activity = custom_activity)
-    
-@client.event
-async def on_message(message):
-    if message.author.bot == False:
-        with open('users.json', 'r') as f:
-            users = json.load(f)
- 
- 
-        await update_data(users, message.author)
-        await add_experience(users, message.author, 5)
-        await level_up(users, message.author, message)
-   
-   
-        with open('users.json', 'w') as f:
-            json.dump(users, f)
- 
+
 
 
 @client.event
@@ -116,6 +101,22 @@ async def give_admin(ctx , member: discord.Member):
 
 #token = ''
 #client.run(token)
+    
+@client.event
+async def on_message(message):
+    if message.author.bot == False:
+        with open('users.json', 'r') as f:
+            users = json.load(f)
+ 
+ 
+        await update_data(users, message.author)
+        await add_experience(users, message.author, 5)
+        await level_up(users, message.author, message)
+   
+   
+        with open('users.json', 'w') as f:
+            json.dump(users, f)
+ 
 
 token = os.environ.get('token')
 client.run(str(token))
